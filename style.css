@@ -1,0 +1,384 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+:root{
+    --main-color: #1d1d1d;
+    --second-color: #3a3a3a;
+    --txt-color:#bbb;
+    --txt-white: #fff;
+
+    --header-height: 75px;
+    --header-padding: 93px;
+}
+
+body{
+    background-color:var(--main-color);
+    color: var(--txt-color);
+    overflow-x: hidden;
+}
+
+a{
+    text-decoration: none;
+    color:unset;
+    display:inline-block;
+}
+
+ul{
+    list-style-type: none;
+}
+
+img{
+    max-width: 100%;
+}
+
+.logo > img{
+    max-width: 15%;
+}
+
+header{
+    height: var(--header-height);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color:#181818;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--header-padding);
+    z-index: 99;
+    transition: height 0.3s ease 0s;
+}
+
+header.shrink{
+    height: 60px;
+    background-color: var(--second-color);
+}
+
+.main-menu-wrapper{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    pointer-events: none;
+}
+
+.main-menu{
+    display: flex;
+    pointer-events: visible;
+}
+
+.main-menu > li > a {
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    color: var(--txt-color);
+}
+
+.main-menu > li > a.active{
+    color: var(--txt-white);
+}
+
+.main-menu > li ~ li {
+    margin-left: 84px;
+}
+
+.main-menu > li > a:hover,
+.user-menu > li > a:hover{
+    color: var(--txt-white);
+}
+
+.user-menu{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-menu > li > a > i {
+    font-size: 1.2rem;
+}
+
+.user-menu > li ~ li {
+    margin-left: 20px;
+}
+
+.hero{
+    height: 100vh;
+    padding-top: var(--header-height);
+    position: relative;
+}
+
+.slide-container {
+    height: 100%;
+    position: relative;
+}
+
+.slide {
+    display: flex;
+    height: 0;
+    overflow: hidden;
+}
+
+.slide.active {
+    height: 100%;
+}
+.slide-img{
+    width: 58%;
+    padding: 80px 60px 0 0;
+    z-index: 1;
+}
+.slide-img img {
+    width: 100%;
+    transform: rotate(-60deg);
+    transform-origin: bottom;
+    opacity: 0;
+    transition: transform 1s  cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease 0s;
+}
+
+.slide.active .slide-img img{
+    transform: rotateX(0);
+    opacity: 1;
+}
+
+.slide-txt {
+    width: 42%;
+    padding-left: 60px;
+
+}
+.slide-title {
+    width: max-content;
+}
+
+.slide-title > h3 {
+    font-size: 7rem;
+    color: var(--txt-white);
+    text-transform: capitalize;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 2px;
+    transform: translateX(-200px);
+    transition: transform 0.5s  ease 0s;
+}
+.slide.active .slide-title > h3 {
+    transform: translateX(0);
+}
+
+.slide-description,
+.slide-btn {
+    margin-top: 84px;
+}
+
+.slide-description > p {
+    font-size: 1.2rem;
+    transition-delay: 0.3s;
+
+}
+
+.hero-btn {
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 10px 50px;
+    background-color: #5271FF;
+    color: var(--main-color);
+    transition: transform 0.3s ease 0s;
+}
+
+.slide-description > p,
+.slide-btn{
+    transform: translateY(100px);
+    opacity: 0;
+    transition: transform 0.5s ease 0s, opacity 0.5s ease 0s;
+}
+
+.slide.active .slide-description > p,
+.slide.active .slide-btn {
+    transform: translateY(0);
+    opacity: 1;
+}
+.slide-btn{
+    transition-delay: 0.6s;
+}
+
+.hero-btn:hover {
+    transform: translateY(-10px);
+}
+
+.slide-control {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    z-index: 98;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.slide-control > li{
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease 0s;
+}
+
+.slide-control > li.active{
+    transform: scale(1.5);
+    color: #5271FF;
+}
+
+.slide-control > li ~ li {
+    margin-left: 30px;
+}
+
+.slide-control > li:hover {
+    color: #5271FF;
+}
+
+/*Content*/
+.section {
+    padding: 4rem 0 0;
+}
+
+.section-content {
+    padding: 4rem 4rem 0;
+}
+
+.section-title {
+    text-align: center;
+    position: relative;
+}
+
+.section-title > h3 {
+    text-transform: uppercase;
+}
+.second-title{
+    font-size: 4rem;
+    color: var(--second-color);
+    position: absolute;
+    left: 24%;
+    bottom:40%;
+    z-index:-1;
+}
+
+.main-title {
+    font-size: 2.5rem;
+    z-index: 1;
+}
+.category-img{
+    padding: 1rem;
+    height: 600px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+}
+.category-img-inner{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-position: bottom;
+    background-size: cover;
+    transition: transform 1s ease 0s;
+}
+
+.category-img:hover .category-img-inner{
+    transform: scale(1.3);
+}
+.category-title{
+    font-weight: 700;
+    font-size: 3rem;
+    padding: 2rem;
+    position: absolute;
+    bottom:0;
+    color: var(--txt-white);
+}
+
+.product-card {
+    padding: 20px;
+    text-align: center;
+    transition: background-color 0.3s ease 0s;
+}
+
+.product-card:hover{
+    background-color:#5271FF;
+}
+
+.product-card-img{
+    margin-bottom: 20px;
+}
+
+.product-name {
+    font-size:1.5rem;
+    font-weight: 600;
+    text-transform:uppercase;
+    margin-bottom: 10px;
+}
+
+.product-card-large .product-name{
+    font-size: 2.4rem;
+}
+
+.product-price{
+    font-weight: 700;
+    color: var(--txt-white);
+    margin-bottom: 20px;
+    display: block;
+}
+.product-card-large .product-price{
+    font-size:1.8rem;
+}
+.btn {
+    background-color: #3A3A3A;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.3s ease 0s;
+}
+.btn:hover {
+    transform: translateY(-10px);
+}
+
+/*footer*/
+
+
+
+footer{
+    background-color: #181818;
+    border-top: 2px solid #5271FF;
+}
+.footer__heading{
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color:var(--txt-color);
+}
+.footer__list{
+    padding-left:0;
+    list-style: none;
+}
+.footer__item-link{
+    text-decoration: none;
+    font-size: 1rem;
+    color: #737373;
+    padding: 4px 0;
+    display: flex;
+    align-items: center;
+}
+.footer__item-link:hover{
+    color: #5271FF;
+}
+
+.footer__item-icon{
+    font-size: 1.2rem;
+    margin-right: 6px;
+}
